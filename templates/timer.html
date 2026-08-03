@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">Study Timer</h1>
+
+<div class="timer-container">
+
+
+<!-- Timer Controls -->
+
+<div class="timer-controls">
+
+<select id="habitSelect">
+
+<option value="">Select Habit</option>
+
+{% for habit in habits %}
+
+<option value="{{ habit.id }}">
+{{ habit.habit_name }}
+</option>
+
+{% endfor %}
+
+</select>
+
+
+<h2 id="timerDisplay">00:00:00</h2>
+
+
+<button onclick="startTimer()" class="btn-primary">
+Start
+</button>
+
+
+<button onclick="stopTimer()" class="btn-secondary">
+Stop
+</button>
+
+
+<button onclick="resetTimer()" class="btn-danger">
+Reset
+</button>
+
+
+</div>
+
+
+<!-- Timer Sessions -->
+
+<div class="timer-sessions">
+
+<h3>Timer Sessions</h3>
+
+{% if timers %}
+
+{% for timer in timers %}
+
+<div class="timer-card">
+
+<h4>{{ timer.habit_name }}</h4>
+
+<p>Duration: {{ timer.duration_seconds }} seconds</p>
+
+<p>Date: {{ timer.created_at }}</p>
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<p>No timer sessions yet.</p>
+
+{% endif %}
+
+</div>
+
+</div>
+
+
+<script>
+
+let startTime;
+let interval;
+
+function startTimer(){
+
+startTime = new Date();
+
+interval = setInterval(updateTimer,1000);
+
+}
+
+function updateTimer(){
+
+let now = new Date();
+
+let diff = Math.floor((now - startTime)/1000);
+
+let hrs = Math.floor(diff/3600);
+let mins = Math.floor((diff%3600)/60);
+let secs = diff%60;
+
+document.getElementById("timerDisplay").innerText =
+String(hrs).padStart(2,'0') + ":" +
+String(mins).padStart(2,'0') + ":" +
+String(secs).padStart(2,'0');
+
+}
+
+function stopTimer(){
+
+clearInterval(interval);
+
+let now = new Date();
+
+let duration = Math.floor((now - startTime)/1000);
+
+let habit = document.getElementById("habitSelect").value;
+
+if(!habit){
+
+alert("Select a habit first");
+
+return;
+
+}
+
+fetch("/save_timer",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/x-www-form-urlencoded"
+},
+
+body:"habit_id="+habit+"&duration_seconds="+duration
+
+}).then(()=>location.reload());
+
+}
+
+function resetTimer(){
+
+window.location.href="/reset_timer";
+
+}
+
+</script>
+
+{% endblock %}

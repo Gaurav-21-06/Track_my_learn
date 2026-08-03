@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">Study Log</h1>
+
+<div class="studylog-container">
+
+<!-- Log Form -->
+
+<div class="log-form">
+
+<form method="POST" action="/save_studylog">
+
+<select name="habit_id" required class="log-input">
+
+<option value="">Select Habit</option>
+
+{% for habit in habits %}
+
+<option value="{{ habit.id }}">
+{{ habit.habit_name }}
+</option>
+
+{% endfor %}
+
+</select>
+
+
+<input
+type="number"
+name="study_time"
+placeholder="Study Time (minutes)"
+required
+class="log-input"
+>
+
+
+<input
+type="number"
+name="skipped_days"
+placeholder="Skipped Days"
+required
+class="log-input"
+>
+
+
+<input
+type="number"
+name="quiz_score"
+placeholder="Quiz Score (0-100)"
+required
+class="log-input"
+>
+
+
+<label>Mood (1-5)</label>
+
+<input
+type="range"
+name="mood"
+min="1"
+max="5"
+value="3"
+class="slider"
+>
+
+
+<label>Focus (1-5)</label>
+
+<input
+type="range"
+name="focus"
+min="1"
+max="5"
+value="3"
+class="slider"
+>
+
+
+<div class="checkbox-row">
+
+<label for="completed">Completed</label>
+<input type="checkbox" id="completed" name="completed">
+
+</div>
+
+
+<div class="button-row">
+
+<button type="submit" class="btn-primary">
+Save Log Entry
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+
+<!-- Recent Logs -->
+
+<div class="recent-logs">
+
+<h3>Recent Logs</h3>
+
+{% if logs %}
+
+{% for log in logs %}
+
+<div class="log-card">
+
+<h4>{{ log.habit_name }}</h4>
+
+<p>Study Time: {{ log.study_time }} minutes</p>
+
+<p>Focus Level: {{ log.focus }}/5</p>
+
+<p>Date: {{ log.log_date }}</p>
+
+<p>
+
+{% if log.completed %}
+
+<span class="completed">Completed</span>
+
+{% else %}
+
+<span class="skipped">Skipped</span>
+
+{% endif %}
+
+</p>
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<p>No study logs yet.</p>
+
+{% endif %}
+
+</div>
+
+</div>
+
+
+<style>
+
+/* Same size inputs */
+
+.log-input{
+width:100%;
+padding:14px;
+margin-bottom:16px;
+font-size:16px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+
+/* Slider width */
+
+.slider{
+width:100%;
+margin-bottom:20px;
+}
+
+
+/* Completed + checkbox */
+
+.checkbox-row{
+display:inline-flex;
+align-items:center;
+gap:6px;
+margin-bottom:15px;
+font-size:16px;
+}
+
+
+/* Button spacing */
+
+.button-row{
+margin-top:10px;
+}
+
+</style>
+
+{% endblock %}

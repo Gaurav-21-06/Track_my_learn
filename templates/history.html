@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">Prediction History</h1>
+
+<div class="history-container">
+
+{% if history %}
+
+{% for item in history %}
+
+<div class="history-card">
+
+<p>
+<strong>Habit:</strong>
+{{ item.habit_name }}
+</p>
+
+<p>
+<strong>Prediction:</strong>
+{{ item.prediction_result }}
+</p>
+
+<p>
+<strong>Confidence:</strong>
+{{ item.confidence }}%
+</p>
+
+<p>
+<strong>Date:</strong>
+{{ item.created_at }}
+</p>
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<p>No prediction history available.</p>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

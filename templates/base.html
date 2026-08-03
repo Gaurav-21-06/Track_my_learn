@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TrackMyLearn AI</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body>
+
+<div class="main-container">
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <h2 class="logo">TrackMyLearn AI</h2>
+
+        <a href="/dashboard">Dashboard</a>
+        <a href="/habits">My Habits</a>
+        <a href="/studylog">Study Log</a>
+        <a href="/timer">Study Timer</a>
+        <a href="/insights">Insights</a>
+        <a href="/prediction">Predictions</a>
+        <a href="/history">History</a>
+        <a href="/recommendations">Recommendations</a>
+
+        <div class="logout">
+            <a href="/logout">Sign Out</a>
+        </div>
+
+    </div>
+
+
+    <!-- Page Content -->
+
+    <div class="content">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+
+</div>
+
+
+<!-- Ensure scripts run after page loads -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("TrackMyLearn AI Loaded");
+});
+</script>
+
+
+</body>
+</html>

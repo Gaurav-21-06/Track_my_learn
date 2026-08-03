@@ -1,0 +1,336 @@
+body{
+background:#0f172a;
+color:white;
+font-family:Arial,Helvetica,sans-serif;
+margin:0;
+padding:0;
+}
+
+
+/* Landing Page */
+
+.landing-body{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+text-align:center;
+}
+
+.landing-title{
+font-size:48px;
+margin-bottom:10px;
+}
+
+.landing-tagline{
+font-size:20px;
+margin-bottom:20px;
+}
+
+.landing-description{
+max-width:500px;
+margin:auto;
+margin-bottom:30px;
+color:#cbd5e1;
+}
+
+.landing-buttons a{
+margin:10px;
+padding:12px 25px;
+text-decoration:none;
+border-radius:6px;
+}
+
+.btn-primary{
+background:#22c55e;
+color:white;
+border:none;
+padding:10px 20px;
+cursor:pointer;
+border-radius:5px;
+}
+
+.btn-secondary{
+background:#3b82f6;
+color:white;
+border:none;
+padding:10px 20px;
+cursor:pointer;
+border-radius:5px;
+}
+
+.btn-danger{
+background:#ef4444;
+color:white;
+border:none;
+padding:10px 20px;
+cursor:pointer;
+border-radius:5px;
+}
+
+
+/* Auth Pages */
+
+.auth-body{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.auth-container{
+background:#1e293b;
+padding:30px;
+border-radius:10px;
+width:300px;
+}
+
+.auth-container input{
+width:100%;
+margin:10px 0;
+padding:10px;
+border:none;
+border-radius:5px;
+}
+
+.auth-switch{
+margin-top:10px;
+text-align:center;
+}
+
+
+/* Layout */
+
+.main-container{
+display:flex;
+height:100vh;
+}
+
+.sidebar{
+width:220px;
+background:#020617;
+padding:20px;
+}
+
+.sidebar a{
+display:block;
+color:white;
+text-decoration:none;
+margin:10px 0;
+}
+
+.sidebar a:hover{
+color:#22c55e;
+}
+
+.logo{
+margin-bottom:20px;
+}
+
+.content{
+flex:1;
+padding:20px;
+overflow-y:auto;
+}
+
+
+/* Cards */
+
+.cards-container{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-bottom:30px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+text-align:center;
+}
+
+
+/* Charts */
+
+.charts-container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.chart-box{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+}
+
+
+/* Habit Cards */
+
+.habits-container{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin-top:20px;
+}
+
+.habit-card{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+}
+
+
+/* Study Log */
+
+.studylog-container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.log-form{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+}
+
+.log-form input,
+.log-form select{
+width:100%;
+margin:10px 0;
+padding:10px;
+border:none;
+border-radius:5px;
+}
+
+.recent-logs{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+}
+
+.log-card{
+background:#020617;
+padding:15px;
+margin-bottom:10px;
+border-radius:5px;
+}
+
+.completed{
+color:#22c55e;
+}
+
+.skipped{
+color:#ef4444;
+}
+
+
+/* Timer */
+
+.timer-container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.timer-controls{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+text-align:center;
+}
+
+.timer-sessions{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+}
+
+.timer-card{
+background:#020617;
+padding:15px;
+margin-bottom:10px;
+border-radius:5px;
+}
+
+
+/* Insights */
+
+.analysis-box{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+margin-top:20px;
+}
+
+.analysis-box ul{
+padding-left:20px;
+}
+
+
+/* Prediction */
+
+.prediction-container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.prediction-form{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+}
+
+.prediction-form input,
+.prediction-form select{
+width:100%;
+margin:10px 0;
+padding:10px;
+border:none;
+border-radius:5px;
+}
+
+.prediction-result{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+text-align:center;
+}
+
+.prediction-text{
+font-size:20px;
+margin-top:10px;
+}
+
+
+/* History */
+
+.history-container{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.history-card{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+}
+
+
+/* Recommendations */
+
+.recommendations-container{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.recommendation-card{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+}

@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">Dashboard</h1>
+
+<div class="cards-container">
+
+<div class="card">
+<h3>Total Study Time</h3>
+<p>{{ total_time }} minutes</p>
+</div>
+
+<div class="card">
+<h3>Completed Tasks</h3>
+<p>{{ completed_tasks }}</p>
+</div>
+
+<div class="card">
+<h3>Skipped Tasks</h3>
+<p>{{ skipped_tasks }}</p>
+</div>
+
+<div class="card">
+<h3>Current Streak</h3>
+<p>{{ streak }} days</p>
+</div>
+
+<!-- AI Productivity Score -->
+
+<div class="card">
+<h3>AI Productivity Score</h3>
+<p>{{ productivity_score }}/100</p>
+<small>{{ productivity_message }}</small>
+</div>
+
+</div>
+
+
+<div class="charts-container">
+
+<div class="chart-box">
+
+<h3>Weekly Study Progress</h3>
+
+<canvas id="studyChart"></canvas>
+
+</div>
+
+
+<div class="chart-box">
+
+<h3>Completion Rate</h3>
+
+<canvas id="completionChart"></canvas>
+
+</div>
+
+</div>
+
+<script>
+
+const studyCtx = document.getElementById("studyChart").getContext("2d");
+
+new Chart(studyCtx, {
+type: "bar",
+data: {
+labels: {{ chart_dates | tojson }},
+datasets: [{
+label: "Study Time",
+data: {{ chart_times | tojson }},
+borderWidth: 1
+}]
+},
+options: {
+responsive: true
+}
+});
+
+
+const completionCtx = document.getElementById("completionChart").getContext("2d");
+
+new Chart(completionCtx, {
+type: "pie",
+data: {
+labels: ["Completed", "Skipped"],
+datasets: [{
+data: [
+{{ pie_data.completed }},
+{{ pie_data.skipped }}
+]
+}]
+},
+options: {
+responsive: true
+}
+});
+
+</script>
+
+
+{% endblock %}

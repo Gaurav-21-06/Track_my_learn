@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">AI Recommendations</h1>
+
+<div class="recommendation-container">
+
+{% if predicted_time %}
+
+<div class="recommendation-card">
+
+<h2>Recommended Study Time</h2>
+
+<p class="recommend-time">
+{{ ((predicted_time + 9) // 10) * 10 }} minutes per session
+</p>
+
+<p class="recommend-message">
+Based on your study behavior, studying around {{ ((predicted_time + 9) // 10) * 10 }} minutes per session may improve productivity.
+</p>
+
+</div>
+
+{% else %}
+
+<p>No recommendations available yet.</p>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

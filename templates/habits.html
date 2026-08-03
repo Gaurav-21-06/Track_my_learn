@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">My Habits</h1>
+
+<button class="btn-primary" onclick="openForm()">
+New Habit
+</button>
+
+
+<!-- Habit Form -->
+
+<div id="habitForm" class="habit-form" style="display:none; margin-top:20px;">
+
+<form method="POST" action="/create_habit">
+
+<input
+type="text"
+name="habit_name"
+placeholder="Habit Name"
+required
+class="habit-input"
+>
+
+<select name="category" required class="habit-input">
+
+<option value="">Select Category</option>
+
+<option value="Programming">Programming</option>
+<option value="Mathematics">Mathematics</option>
+<option value="Reading">Reading</option>
+<option value="Science">Science</option>
+<option value="Language">Language</option>
+<option value="Other">Other</option>
+
+</select>
+
+
+<select name="difficulty" required class="habit-input">
+
+<option value="">Select Difficulty</option>
+
+<option value="Easy">Easy</option>
+<option value="Medium">Medium</option>
+<option value="Hard">Hard</option>
+
+</select>
+
+<button type="submit" class="btn-primary">
+Create Habit
+</button>
+
+</form>
+
+</div>
+
+
+<!-- Habit Cards -->
+
+<div class="habits-container">
+
+{% if habits %}
+
+{% for habit in habits %}
+
+<div class="habit-card">
+
+<h3>{{ habit.habit_name }}</h3>
+
+<p>Category: {{ habit.category }}</p>
+
+<p>Difficulty: {{ habit.difficulty }}</p>
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<p>No habits yet. Create your first habit.</p>
+
+{% endif %}
+
+</div>
+
+
+<style>
+
+/* Larger Input Fields */
+
+.habit-input{
+    width:220px;
+    padding:12px;
+    font-size:16px;
+    margin-right:10px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+
+/* Make button bigger */
+
+.btn-primary{
+    padding:12px 20px;
+    font-size:16px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+</style>
+
+
+<script>
+
+function openForm() {
+
+var form = document.getElementById("habitForm");
+
+if (form.style.display === "none") {
+    form.style.display = "block";
+} else {
+    form.style.display = "none";
+}
+
+}
+
+</script>
+
+{% endblock %}

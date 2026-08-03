@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">Insights</h1>
+
+<div class="cards-container">
+
+<div class="card">
+<h3>Best Study Time</h3>
+<p>{{ best_study_time }}-{{ "%02d"|format(best_study_time[:2]|int + 1) }}:00</p>
+</div>
+
+<div class="card">
+<h3>Best Category</h3>
+<p>{{ best_category }}</p>
+</div>
+
+<div class="card">
+<h3>Average Focus</h3>
+<p>{{ avg_focus }} / 5</p>
+</div>
+
+<div class="card">
+<h3>Total Sessions</h3>
+<p>{{ total_sessions }}</p>
+</div>
+
+</div>
+
+
+<!-- AI Pattern Analysis -->
+
+<div class="analysis-box">
+
+<h3>AI Pattern Analysis</h3>
+
+<ul>
+
+{% for item in analysis %}
+
+<li>{{ item }}</li>
+
+{% endfor %}
+
+</ul>
+
+</div>
+
+
+<!-- Focus Trend Graph -->
+
+<div class="chart-box">
+
+<h3>Focus Level Trend</h3>
+
+<canvas id="focusChart"></canvas>
+
+</div>
+
+
+<script>
+
+const focusCtx = document.getElementById("focusChart");
+
+new Chart(focusCtx,{
+
+type:"line",
+
+data:{
+
+labels: {{ trend_dates | safe }},
+
+datasets:[{
+
+label:"Focus Level",
+
+data: {{ trend_focus | safe }},
+
+fill:false,
+
+tension:0.1
+
+}]
+
+},
+
+options:{
+responsive:true
+}
+
+});
+
+</script>
+
+{% endblock %}

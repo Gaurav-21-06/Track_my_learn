@@ -1,0 +1,12 @@
+Flask==3.0.0
+Flask-MySQLdb==2.0.0
+Flask-Mail==0.9.1
+Flask-Login==0.6.3
+Flask-Bcrypt==1.0.1
+python-dotenv==1.0.0
+pandas==2.2.2
+numpy==1.26.4
+scikit-learn==1.4.2
+joblib==1.4.2
+matplotlib==3.8.4
+seaborn==0.13.2
